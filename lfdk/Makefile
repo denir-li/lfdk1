@@ -14,13 +14,13 @@ STRINGS				=   $(CROSS_COMPILE)strings
 STRIP				=   $(CROSS_COMPILE)strip
 
 CFLAGS				=
-LDFLAGS				=   -lpanel -g3
+LDFLAGS				=   -lpanel -lncurses -g3
 OBJS				=   lfdk
 LIBS				=	libmem.c libpci.c libio.c libcmos.c
 
 
 all:
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(OBJS) $(OBJS).c $(LIBS)
+	$(CC) $(CFLAGS) -o $(OBJS) $(OBJS).c $(LIBS) $(LDFLAGS)
 	#$(STRIP) $(OBJS)
 
 clean:
