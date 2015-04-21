@@ -14,7 +14,7 @@
  * GNU General Public License for more details.
  *
  */
-#define LFDK_VERSION            "2.0.0"
+#define LFDK_VERSION            "2.0.1"
 #define LFDK_PROGNAME           "lfdk"
 #define LFDK_VERTEXT            LFDK_PROGNAME" version "LFDK_VERSION", Linux Firmware Debug Kit"
 #define LFDK_MAX_PCIBUF         50
