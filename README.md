@@ -14,7 +14,7 @@ Fix for Ubuntu 14.04 (Kernel 3.13), how to use:
 
 
 ## Reference:
-* <https://github.com/acelan/lfdk> remove asm/system.h
+* <https://github.com/acelan/lfdk> : [asm/system.h](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f05e798ad4c09255f590f5b2c00a7ca6c172f983 "Kernel 3.4") was removed in Kernel 3.4
 * <https://github.com/DesmondWu/lfdk1>
 * <https://github.com/fcwu/lfdk>
 * <http://rickey-nctu.blogspot.tw/2013/07/linux-firmware-debug-kit-on-ubuntu.html>
