@@ -1,6 +1,11 @@
 # Linux Firmware Debug Kit (lfdk)
 
-Fix for Ubuntu 14.04 (Kernel 3.13)
+Fix for Ubuntu 14.04 (Kernel 3.13), how to use:
+
+1. sudo apt-get -y install libncurses5-dev
+2. make
+3. sudo insmod bin/lfdd_drv.ko
+4. sudo bin/lfdk
 
 
 ## Source:
