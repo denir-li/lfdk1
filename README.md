@@ -1,6 +1,6 @@
 # Linux Firmware Debug Kit (lfdk)
 
-Fix for Ubuntu 14.04 (Kernel 3.13), how to use:
+Fork to fix for Ubuntu 14.04 (Kernel 3.13), how to use:
 
 1. sudo apt-get -y install libncurses5-dev
 2. make
