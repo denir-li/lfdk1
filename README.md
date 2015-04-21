@@ -7,11 +7,14 @@ Fork to fix for Ubuntu 14.04 (Kernel 3.13), how to use:
 3. sudo insmod bin/lfdd_drv.ko
 4. sudo bin/lfdk
 
+If you have any questions, please feel free to contact me by E-Mail - Denir Li (<denir.li@gmail.com>).
+
 
 ## Source:
 * v0.1.0 - <http://sourceforge.net/projects/lfdk/> ,  [ioctl](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b19dd42faf413b4705d4adb38521e82d73fa4249 "Kernel 2.6.36") was removed in Kernel 2.6.36, reference from <http://blog.xuite.net/meloscheng/note/62155264> and <http://blog.chinaunix.net/uid-20543672-id-3015637.html> to fix lfdd/lfdd.c.
 * v2.0.0 - <https://github.com/merckhung/lfdk1> , use unlocked_ioctl to replace ioctl in lfdd/lfdd.c and added new features.
 
+PS. The original author: Merck Hung (<merckhung@gmail.com>).
 
 ## Reference:
 * <https://github.com/acelan/lfdk> : [asm/system.h](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f05e798ad4c09255f590f5b2c00a7ca6c172f983 "Kernel 3.4") was removed in Kernel 3.4
