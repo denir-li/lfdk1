@@ -13,6 +13,7 @@ If you have any questions, please feel free to contact me by E-Mail - Denir Li (
 ## Source:
 * v0.1.0 - <http://sourceforge.net/projects/lfdk/> ,  [ioctl](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b19dd42faf413b4705d4adb38521e82d73fa4249 "Kernel 2.6.36") was removed in Kernel 2.6.36, reference from <http://blog.xuite.net/meloscheng/note/62155264> and <http://blog.chinaunix.net/uid-20543672-id-3015637.html> to fix lfdd/lfdd.c.
 * v2.0.0 - <https://github.com/merckhung/lfdk1> , use unlocked_ioctl to replace ioctl in lfdd/lfdd.c and added new features.
+* Firmware Debug Kit (FDK) - <https://github.com/merckhung/fdk> , it's Network Client-Server architecture and exchanging network packets with each other. <https://sites.google.com/site/merckhung/Home/firmwaredebugkit>
 
 PS. The original author: Merck Hung (<merckhung@gmail.com>).
 
