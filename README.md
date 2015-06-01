@@ -15,7 +15,7 @@ If you have any questions, please feel free to contact me by E-Mail - Denir Li (
 * v2.0.0 - <https://github.com/merckhung/lfdk1> , use unlocked_ioctl to replace ioctl in lfdd/lfdd.c and added new features.
 * Firmware Debug Kit (FDK) - <https://github.com/merckhung/fdk> , it's Network Client-Server architecture and exchanging network packets with each other. <https://sites.google.com/site/merckhung/Home/firmwaredebugkit>
 
-PS. The original author: Merck Hung (<merckhung@gmail.com>).
+PS. The original author: Merck Hung (<merckhung@gmail.com>). This software is licensed under the terms of the **GNU General Public License version 2**, as published by the Free Software Foundation, and may be copied, distributed, and modified under those terms.
 
 ## Reference:
 * <https://github.com/acelan/lfdk> : [asm/system.h](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f05e798ad4c09255f590f5b2c00a7ca6c172f983 "Kernel 3.4") was removed in Kernel 3.4
