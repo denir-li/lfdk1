@@ -103,7 +103,7 @@ void PrintBaseScreen( void ) {
 int main( int argc, char **argv ) {
 
     char c, device[ LFDK_MAX_PATH ];
-    int i, fd, orig_fl;
+    int i, fd, orig_fl, ret;
 
     struct tm *nowtime;
     time_t timer;
@@ -208,144 +208,145 @@ int main( int argc, char **argv ) {
     //
     // Scan PCI devices
     //
-    ScanPCIDevice( fd );
+    ret=ScanPCIDevice( fd );
+
+    if(ret==0)
+    {
+		for( ; ; ) {
 
 
-    for( ; ; ) {
+			ibuf = getch();
+			if( (ibuf == 'q') || (ibuf == 'Q') ) {
 
-
-        ibuf = getch();
-        if( (ibuf == 'q') || (ibuf == 'Q') ) {
-        
-            //
-            // Exit when ESC pressed
-            //
-            break;
-        }
-
-
-        //
-        // Major function switch key binding
-        //
-        if( (ibuf == 'p') || (ibuf == 'P') ) {
-
-            func = PCI_LIST_FUNC;
-            ClearPCIScreen();
-            ClearMemScreen(); 
-            ClearIOScreen();
-			ClearCmosScreen();
-            continue;
-        }
-        else if( (ibuf == 'm') || (ibuf == 'M') ) {
-        
-            enter_mem = 1;
-            func = MEM_SPACE_FUNC;
-            ClearPCIScreen();
-            ClearPCILScreen();
-            ClearIOScreen();
-			ClearCmosScreen();
-            continue;
-        }
-        else if( (ibuf == 'i') || (ibuf == 'I') ) {
-
-            enter_mem = 1;
-            func = IO_SPACE_FUNC;
-            ClearPCIScreen();
-            ClearPCILScreen();
-            ClearMemScreen();
-			ClearCmosScreen();
-            continue;
-        }
-        else if( (ibuf == 'o') || (ibuf == 'O') ) {
-
-            enter_mem = 1;
-            func = CMOS_SPACE_FUNC;
-            ClearPCIScreen();
-            ClearPCILScreen();
-            ClearMemScreen();
-			ClearIOScreen();
-            continue;
-        }
-/*
-        else if( ibuf == '2' ) {
-
-            enter_mem = 1;
-            func = I2C_SPACE_FUNC;
-            ClearPCIScreen();
-            ClearPCILScreen();
-            ClearMemScreen();
-			ClearIOScreen();
-			ClearCmosScreen();
-            continue;
-        }
-*/
-
-
-        //
-        // Update timer
-        //
-        time( &timer );
-        nowtime = localtime( &timer );
-        last_sec = nowtime->tm_sec;
-
-
-        // Skip redundant update of timer
-        if( last_sec == nowtime->tm_sec ) {
-
-            PrintFixedWin( BaseScreen, time, 1, 8, 23, 71, BLACK_WHITE, "%2.2d:%2.2d:%2.2d", nowtime->tm_hour, nowtime->tm_min,  nowtime->tm_sec );
-        }
-
-
-        //
-        // Major Functions
-        //
-        switch( func ) {
-        
-            case PCI_DEVICE_FUNC:
-
-                PrintPCIScreen( fd );
-                break;
-
-            case PCI_LIST_FUNC:
-
-                PrintPCILScreen();
-                break;
-
-            case MEM_SPACE_FUNC:
-
-                PrintMemScreen( fd );
-                break;
-
-            case IO_SPACE_FUNC:
-
-                PrintIOScreen( fd );
-                break;
-
-			case CMOS_SPACE_FUNC:
-
-				PrintCmosScreen( fd );
+				//
+				// Exit when ESC pressed
+				//
 				break;
-
-			case I2C_SPACE_FUNC:
-
-				PrintCmosScreen( fd );
-				break;
-
-            default:
-                break;
-        } 
+			}
 
 
-        //
-        // Refresh Screen
-        //
-        update_panels();
-        doupdate();
+			//
+			// Major function switch key binding
+			//
+			if( (ibuf == 'p') || (ibuf == 'P') ) {
+
+				func = PCI_LIST_FUNC;
+				ClearPCIScreen();
+				ClearMemScreen();
+				ClearIOScreen();
+				ClearCmosScreen();
+				continue;
+			}
+			else if( (ibuf == 'm') || (ibuf == 'M') ) {
+
+				enter_mem = 1;
+				func = MEM_SPACE_FUNC;
+				ClearPCIScreen();
+				ClearPCILScreen();
+				ClearIOScreen();
+				ClearCmosScreen();
+				continue;
+			}
+			else if( (ibuf == 'i') || (ibuf == 'I') ) {
+
+				enter_mem = 1;
+				func = IO_SPACE_FUNC;
+				ClearPCIScreen();
+				ClearPCILScreen();
+				ClearMemScreen();
+				ClearCmosScreen();
+				continue;
+			}
+			else if( (ibuf == 'o') || (ibuf == 'O') ) {
+
+				enter_mem = 1;
+				func = CMOS_SPACE_FUNC;
+				ClearPCIScreen();
+				ClearPCILScreen();
+				ClearMemScreen();
+				ClearIOScreen();
+				continue;
+			}
+	/*
+			else if( ibuf == '2' ) {
+
+				enter_mem = 1;
+				func = I2C_SPACE_FUNC;
+				ClearPCIScreen();
+				ClearPCILScreen();
+				ClearMemScreen();
+				ClearIOScreen();
+				ClearCmosScreen();
+				continue;
+			}
+	*/
 
 
-        usleep( 1000 );
+			//
+			// Update timer
+			//
+			time( &timer );
+			nowtime = localtime( &timer );
+			last_sec = nowtime->tm_sec;
+
+
+			// Skip redundant update of timer
+			if( last_sec == nowtime->tm_sec ) {
+
+				PrintFixedWin( BaseScreen, time, 1, 8, 23, 71, BLACK_WHITE, "%2.2d:%2.2d:%2.2d", nowtime->tm_hour, nowtime->tm_min,  nowtime->tm_sec );
+			}
+
+
+			//
+			// Major Functions
+			//
+			switch( func ) {
+
+				case PCI_DEVICE_FUNC:
+
+					PrintPCIScreen( fd );
+					break;
+
+				case PCI_LIST_FUNC:
+
+					PrintPCILScreen();
+					break;
+
+				case MEM_SPACE_FUNC:
+
+					PrintMemScreen( fd );
+					break;
+
+				case IO_SPACE_FUNC:
+
+					PrintIOScreen( fd );
+					break;
+
+				case CMOS_SPACE_FUNC:
+
+					PrintCmosScreen( fd );
+					break;
+
+				case I2C_SPACE_FUNC:
+
+					PrintCmosScreen( fd );
+					break;
+
+				default:
+					break;
+			}
+
+
+			//
+			// Refresh Screen
+			//
+			update_panels();
+			doupdate();
+
+
+			usleep( 1000 );
+		}
     }
-
 
     endwin();
     close( fd );
