@@ -190,7 +190,7 @@ void GetVendorAndDeviceTexts( int venid, int devid, char *ventxt, char *devtxt )
 }
 
 
-void ScanPCIDevice( int fd ) {
+int ScanPCIDevice( int fd ) {
 
     int i;
     unsigned char bus = 0, dev = 0, fun = 0;
@@ -244,11 +244,18 @@ void ScanPCIDevice( int fd ) {
                     GetVendorAndDeviceTexts( lfdd_pci_list[ last_index ].venid, lfdd_pci_list[ last_index ].devid
                                             ,lfdd_pci_list[ last_index ].ventxt, lfdd_pci_list[ last_index ].devtxt );
 
-
                     //
                     // Move to next record
                     //
                     last_index++;
+                    if(last_index>=LFDK_MAX_PCIBUF)
+                    {
+                        PrintFixedWin( PCILScreen, error, 1, 50, 10, 15, WHITE_RED, "Too much device number (>%d)! Program will abort!", LFDK_MAX_PCIBUF );
+                        update_panels();
+                        doupdate();
+                        sleep(5);
+                        return 1;
+                    }
                 }
             }
         }

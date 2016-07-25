@@ -14,10 +14,10 @@
  * GNU General Public License for more details.
  *
  */
-#define LFDK_VERSION            "2.0.1"
+#define LFDK_VERSION            "2.0.2"
 #define LFDK_PROGNAME           "lfdk"
 #define LFDK_VERTEXT            LFDK_PROGNAME" version "LFDK_VERSION", Linux Firmware Debug Kit"
-#define LFDK_MAX_PCIBUF         50
+#define LFDK_MAX_PCIBUF         200
 #define LFDK_MAX_PATH           40
 #define LFDK_MAX_PCIBUS			256
 #define LFDK_MAX_READBUF        512
@@ -154,11 +154,13 @@ typedef struct {
     PANEL *p_devname;
     PANEL *p_vendev;
     PANEL *p_scan;
+    PANEL *p_error;
 
     WINDOW *title;
     WINDOW *devname;
     WINDOW *vendev;
     WINDOW *scan;
+    WINDOW *error;
 
 } PCILPanel;
 
