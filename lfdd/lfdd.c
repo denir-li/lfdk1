@@ -28,6 +28,9 @@
 #include <asm/uaccess.h>
 
 #include <linux/version.h>
+#if LINUX_VERSION_CODE > KERNEL_VERSION(4, 12, 0)
+#include <linux/uaccess.h>
+#endif
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 4, 0)
 #include <asm/system.h>
 #endif

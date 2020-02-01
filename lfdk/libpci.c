@@ -266,7 +266,7 @@ int ScanPCIDevice( int fd ) {
 }
 
 
-void WritePCIByteValue( fd ) {
+void WritePCIByteValue( int fd ) {
 
 
     lfdd_pci_data.bus = lfdd_pci_list[ curr_index ].bus;

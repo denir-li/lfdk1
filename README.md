@@ -1,6 +1,6 @@
 # Linux Firmware Debug Kit (lfdk)
 
-Fork to fix for Ubuntu 14.04 (Kernel 3.13), how to use:
+Fork to fix for Ubuntu 18.04.4 LTS (Kernel 5.3), how to use:
 
 1. sudo apt-get -y install libncurses5-dev
 2. make
@@ -19,6 +19,9 @@ PS. The original author: Merck Hung (<merckhung@gmail.com>). This software is li
 
 ## Reference:
 * <https://github.com/acelan/lfdk> : [asm/system.h](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f05e798ad4c09255f590f5b2c00a7ca6c172f983 "Kernel 3.4") was removed in Kernel 3.4
+* copy_to_user() & copy_from_user() moved to [linux/uaccess.h](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/include/linux/uaccess.h?h=linux-4.12.y#n78 "Kernel 4.12") from Kernel 4.12
 * <https://github.com/DesmondWu/lfdk1>
 * <https://github.com/fcwu/lfdk>
 * <http://rickey-nctu.blogspot.tw/2013/07/linux-firmware-debug-kit-on-ubuntu.html>
+* <https://github.com/WadeChenX/lfdk2>
+* <https://github.com/pciutils/pciids>
