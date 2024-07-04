@@ -32,7 +32,7 @@
 
 
 MemPanel CmosScreen;
-struct lfdd_io_t lfdd_io_data;
+struct lfdd_io_t lfdd_io_cmos_data;
 
 
 extern int x, y;
@@ -201,7 +201,7 @@ void PrintCmosScreen() {
     //
     // Read memory space 256 bytes
     //
-	ReadCmos256Bytes( lfdd_io_data.mass_buf );
+	ReadCmos256Bytes( lfdd_io_cmos_data.mass_buf );
 
 
     //
@@ -223,7 +223,7 @@ void PrintCmosScreen() {
 
         for( j = 0 ; j < LFDK_BYTE_PER_LINE ; j++ ) {
 
-            tmp = ((unsigned char)lfdd_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ]);
+            tmp = ((unsigned char)lfdd_io_cmos_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ]);
             if( (tmp >= '!') && (tmp <= '~') ) {
             
                 wprintw( CmosScreen.ascii, "%c", tmp );
@@ -280,7 +280,7 @@ void PrintCmosScreen() {
                     wattrset( CmosScreen.value, COLOR_PAIR( BLACK_YELLOW ) | A_BOLD ); 
                 }
             }
-            else if( ((unsigned char)lfdd_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ]) ) {
+            else if( ((unsigned char)lfdd_io_cmos_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ]) ) {
            
                 wattrset( CmosScreen.value, COLOR_PAIR( YELLOW_BLUE ) | A_BOLD );            
             }
@@ -302,12 +302,12 @@ void PrintCmosScreen() {
                 }
                 else {
                 
-                    wprintw( CmosScreen.value, "%2.2X", (unsigned char)lfdd_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ] );
+                    wprintw( CmosScreen.value, "%2.2X", (unsigned char)lfdd_io_cmos_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ] );
                 }
             }
             else {
 
-                wprintw( CmosScreen.value, "%2.2X", (unsigned char)lfdd_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ] );
+                wprintw( CmosScreen.value, "%2.2X", (unsigned char)lfdd_io_cmos_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ] );
             }
 
 

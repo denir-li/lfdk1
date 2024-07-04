@@ -108,7 +108,7 @@ static long lfdd_ioctl( struct file *file
 
     struct lfdd_pci_t lfdd_pci_data;
     struct lfdd_mem_t lfdd_mem_data;
-    struct lfdd_io_t lfdd_io_data;
+    struct lfdd_io_t lfdd_io_dd_data;
     void __user *argp = (void __user *)arg;
 
 	printk( KERN_INFO "C1\n" );
@@ -203,22 +203,22 @@ static long lfdd_ioctl( struct file *file
         case LFDD_IO_READ_256BYTE:
 
 			printk( KERN_INFO "C15\n" );
-            if( copy_from_user( &lfdd_io_data, argp, sizeof( struct lfdd_io_t ) ) ) {
+            if( copy_from_user( &lfdd_io_dd_data, argp, sizeof( struct lfdd_io_t ) ) ) {
 
 				printk( KERN_INFO "C16\n" );
                 return -EFAULT;
             }
 
-            memset( lfdd_io_data.mass_buf, 0, LFDD_MASSBUF_SIZE );
-            lfdd_io_read_256byte( &lfdd_io_data );
+            memset( lfdd_io_dd_data.mass_buf, 0, LFDD_MASSBUF_SIZE );
+            lfdd_io_read_256byte( &lfdd_io_dd_data );
 
-            return copy_to_user( argp, &lfdd_io_data, sizeof( struct lfdd_io_t ) );
+            return copy_to_user( argp, &lfdd_io_dd_data, sizeof( struct lfdd_io_t ) );
 
         case LFDD_IO_WRITE_BYTE:
-            LFDD_MEM_WRITE( lfdd_io_write_byte, lfdd_io_data );
+            LFDD_MEM_WRITE( lfdd_io_write_byte, lfdd_io_dd_data );
 
         case LFDD_IO_READ_BYTE:
-            LFDD_MEM_READ( lfdd_io_read_byte, lfdd_io_data );
+            LFDD_MEM_READ( lfdd_io_read_byte, lfdd_io_dd_data );
 
     }
 

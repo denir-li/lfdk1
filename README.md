@@ -1,6 +1,6 @@
 # Linux Firmware Debug Kit (lfdk)
 
-Fork to fix for Ubuntu 18.04.4 LTS (Kernel 5.3), how to use:
+Fork to fix for Ubuntu 24.04 LTS (Kernel 6.8), how to use:
 
 1. sudo apt-get -y install libncurses5-dev
 2. make

@@ -31,7 +31,7 @@
 
 
 MemPanel IOScreen;
-struct lfdd_io_t lfdd_io_data;
+struct lfdd_io_t lfdd_io_io_data;
 
 
 extern int x, y;
@@ -48,10 +48,10 @@ unsigned int ioaddr = 0;
 void WriteIOByteValue( int fd ) {
 
 
-    lfdd_io_data.addr = ioaddr + x * LFDK_BYTE_PER_LINE + y;
-    lfdd_io_data.buf = wbuf;
+    lfdd_io_io_data.addr = ioaddr + x * LFDK_BYTE_PER_LINE + y;
+    lfdd_io_io_data.buf = wbuf;
 
-    LFDD_IOCTL( fd, LFDD_IO_WRITE_BYTE, lfdd_io_data );
+    LFDD_IOCTL( fd, LFDD_IO_WRITE_BYTE, lfdd_io_io_data );
 }
 
 
@@ -256,12 +256,12 @@ void PrintIOScreen( int fd ) {
     //
     if( enter_mem ) {
 
-        memset( lfdd_io_data.mass_buf, 0xff, LFDD_MASSBUF_SIZE );
+        memset( lfdd_io_io_data.mass_buf, 0xff, LFDD_MASSBUF_SIZE );
     }
     else {
 
-        lfdd_io_data.addr = ioaddr;
-        LFDD_IOCTL( fd, LFDD_IO_READ_256BYTE, lfdd_io_data );
+        lfdd_io_io_data.addr = ioaddr;
+        LFDD_IOCTL( fd, LFDD_IO_READ_256BYTE, lfdd_io_io_data );
     }
 
 
@@ -284,7 +284,7 @@ void PrintIOScreen( int fd ) {
 
         for( j = 0 ; j < LFDK_BYTE_PER_LINE ; j++ ) {
 
-            tmp = ((unsigned char)lfdd_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ]);
+            tmp = ((unsigned char)lfdd_io_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ]);
             if( (tmp >= '!') && (tmp <= '~') ) {
             
                 wprintw( IOScreen.ascii, "%c", tmp );
@@ -341,7 +341,7 @@ void PrintIOScreen( int fd ) {
                     wattrset( IOScreen.value, COLOR_PAIR( BLACK_YELLOW ) | A_BOLD ); 
                 }
             }
-            else if( ((unsigned char)lfdd_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ]) ) {
+            else if( ((unsigned char)lfdd_io_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ]) ) {
            
                 wattrset( IOScreen.value, COLOR_PAIR( YELLOW_BLUE ) | A_BOLD );            
             }
@@ -363,12 +363,12 @@ void PrintIOScreen( int fd ) {
                 }
                 else {
                 
-                    wprintw( IOScreen.value, "%2.2X", (unsigned char)lfdd_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ] );
+                    wprintw( IOScreen.value, "%2.2X", (unsigned char)lfdd_io_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ] );
                 }
             }
             else {
 
-                wprintw( IOScreen.value, "%2.2X", (unsigned char)lfdd_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ] );
+                wprintw( IOScreen.value, "%2.2X", (unsigned char)lfdd_io_io_data.mass_buf[ (i * LFDK_BYTE_PER_LINE) + j ] );
             }
 
 

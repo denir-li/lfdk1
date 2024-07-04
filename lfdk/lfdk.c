@@ -65,7 +65,7 @@ static void usage( void ) {
 
     fprintf( stderr, "\n"LFDK_VERTEXT"\n" );
 	fprintf( stderr, "Copyright (C) 2006 - 2010, Merck Hung <merckhung@gmail.com>\n" );
-	fprintf( stderr, "Copyright (C) 2015 - 2020, Denir Li <denir.li@gmail.com>\n" );
+	fprintf( stderr, "Copyright (C) 2015 - 2024, Denir Li <denir.li@gmail.com>\n" );
     fprintf( stderr, "Usage: "LFDK_PROGNAME" [-h] [-d /dev/lfdd] [-n ./pci.ids] [-b 255]\n" );
     fprintf( stderr, "\t-n\tFilename of PCI Name Database, default is /usr/share/misc/pci.ids\n" );
     fprintf( stderr, "\t-d\tDevice name of Linux Firmware Debug Driver, default is /dev/lfdd\n" );
